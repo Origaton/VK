@@ -5,10 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "msedge",
+            "type": "vscode-edge-devtools.debug",
             "request": "launch",
-            "name": "Open index.html",
-            "file": "c:\\Everything\\VK\\index.html"
+            "name": "Launch Microsoft Edge and open the Edge DevTools",
+            "file": "${workspaceFolder}/index.html",
+            "webRoot": "${workspaceFolder}"
         }
+        
     ]
 }
