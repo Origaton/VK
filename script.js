@@ -1,21 +1,71 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Инициализация после загрузки DOM
+// Ждем полной загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализируем модальное окно
     initModal();
+    
+    // Назначаем обработчики для всех фото и видео элементов
+    setupMediaItems();
+    
+    // Назначаем обработчики для табов
+    setupTabs();
 });
 
 function initModal() {
-    // Создаем элемент для медиа, если его нет
-    const modalContent = document.querySelector('.modal-content .media-container');
-    if (modalContent && !document.getElementById('fullMedia')) {
-        modalContent.innerHTML = '<div id="fullMedia"></div>';
+    // Создаем структуру модального окна, если ее нет
+    if (!document.getElementById('mediaModal')) {
+        const modalHTML = `
+        <div id="mediaModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <div class="media-container">
+                    <div id="fullMedia"></div>
+                </div>
+                <div class="comments-container">
+                    <h3 class="comments-title">Комментарии</h3>
+                    <div class="comment">
+                        <div class="comment-author">Мария Петрова</div>
+                        <div class="comment-text">Отличное фото/видео!</div>
+                        <div class="comment-date">5 минут назад</div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
+    
+    // Назначаем обработчики для модального окна
+    document.querySelector('.close').addEventListener('click', closeModal);
+}
+
+function setupMediaItems() {
+    // Находим все элементы с медиа и назначаем обработчики
+    const mediaItems = document.querySelectorAll('.photo-item, .video-item');
+    
+    mediaItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const mediaType = this.classList.contains('photo-item') ? 'photo' : 'video';
+            const mediaText = this.textContent;
+            openModal(mediaText, this.id || 'media', mediaType);
+        });
+    });
+}
+
+function setupTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tabName = this.textContent.toLowerCase();
+            showTab(tabName === 'фото' ? 'photos' : 'videos');
+        });
+    });
 }
 
 function showTab(tabName) {
     const photosCarousel = document.getElementById('photos-carousel');
     const videosCarousel = document.getElementById('videos-carousel');
     const tabButtons = document.querySelectorAll('.tab-button');
-
+    
     if (tabName === 'photos') {
         photosCarousel.style.display = 'flex';
         videosCarousel.style.display = 'none';
@@ -31,46 +81,40 @@ function showTab(tabName) {
 
 function openModal(mediaText, mediaId, mediaType) {
     const modal = document.getElementById('mediaModal');
-    let fullMedia = document.getElementById('fullMedia');
-
-    // Если элемента нет - создаем его
-    if (!fullMedia) {
-        const mediaContainer = document.querySelector('.media-container');
-        if (mediaContainer) {
-            mediaContainer.innerHTML = '<div id="fullMedia"></div>';
-            fullMedia = document.getElementById('fullMedia');
-        }
-    }
-
-    if (!fullMedia) {
-        console.error('Элемент fullMedia не найден');
+    const fullMedia = document.getElementById('fullMedia');
+    
+    if (!modal || !fullMedia) {
+        console.error('Модальное окно не инициализировано');
         return;
     }
-
+    
     if (mediaType === 'photo') {
         fullMedia.innerHTML = `
-            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #e7e8ec; color: #999;">
+            <div class="photo-placeholder">
                 ${mediaText}
             </div>`;
-    } else if (mediaType === 'video') {
+    } else {
         fullMedia.innerHTML = `
-            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #333; color: #fff; position: relative;">
-                <div style="font-size: 24px;">${mediaText}</div>
-                <div style="position: absolute; font-size: 50px; color: white; text-shadow: 0 0 10px rgba(0,0,0,0.5);">▶</div>
+            <div class="video-placeholder">
+                ${mediaText}
+                <div class="play-icon">▶</div>
             </div>`;
     }
-
+    
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-    document.getElementById('mediaModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('mediaModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
 
-// Закрытие модального окна при клике вне его
-document.addEventListener('click', function (event) {
+// Закрытие по клику вне модального окна
+document.addEventListener('click', function(event) {
     const modal = document.getElementById('mediaModal');
     if (event.target === modal) {
         closeModal();
