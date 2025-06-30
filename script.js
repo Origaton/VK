@@ -1,17 +1,22 @@
-function openModal(src) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('expandedImage');
-    modal.style.display = 'flex';
-    modalImg.src = src;
+function openModal(photoText, photoId) {
+    const modal = document.getElementById('photoModal');
+    const fullPhoto = document.getElementById('fullPhoto');
+
+    // Здесь можно заменить на реальное изображение
+    fullPhoto.innerHTML = `<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #e7e8ec; color: #999;">${photoText}</div>`;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-    document.getElementById('imageModal').style.display = 'none';
+    document.getElementById('photoModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
 
-// Закрытие модального окна при клике вне изображения
+// Закрытие модального окна при клике вне его
 window.onclick = function (event) {
-    const modal = document.getElementById('imageModal');
+    const modal = document.getElementById('photoModal');
     if (event.target == modal) {
         closeModal();
     }

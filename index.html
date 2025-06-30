@@ -13,26 +13,31 @@
     <div class="container">
         <div class="profile-header">
             <div class="profile-cover"></div>
-            <img src="https://sun9-74.userapi.com/impg/c855220/v855220001/217645/M_4H-8W52ZU.jpg?size=400x0&quality=96&sign=8a8b5c5e3c4a8b7c5e3c4a8b7c5e3c4a&c_uniq_tag=QwErTyUiOpAsDfGhJkLzXcVbNmQwErTy&type=album"
-                alt="Фото профиля" class="profile-photo">
             <div class="profile-info">
-                <h1 class="profile-name">Иван Иванов</h1>
+                <div class="profile-photo" onclick="openModal('Фотография профиля', 'profile')">
+                    <div class="profile-photo-placeholder">Фотография профиля</div>
+                </div>
                 <div class="profile-details">
-                    <div class="detail-item">
-                        <span class="detail-icon">📅</span>
-                        <span>25 лет</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon">🏙️</span>
-                        <span>Москва, Россия</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon">🎓</span>
-                        <span>МГУ</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon">💼</span>
-                        <span>Веб-разработчик</span>
+                    <h1 class="profile-name">Иван Иванов</h1>
+                    <div class="profile-status">Онлайн</div>
+
+                    <div class="profile-data">
+                        <div class="data-item">
+                            <div class="data-title">День рождения</div>
+                            <div class="data-value">15 января</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-title">Город</div>
+                            <div class="data-value">Москва</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-title">Университет</div>
+                            <div class="data-value">МГУ</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-title">Статус</div>
+                            <div class="data-value">В активном поиске</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,30 +45,51 @@
 
         <div class="photos-section">
             <h2 class="section-title">
-                <span>Фотографии</span>
-                <span>Все фото</span>
+                Фотографии <a href="#" class="see-all">Все фотографии</a>
             </h2>
             <div class="photos-carousel">
-                <img src="https://sun9-12.userapi.com/impg/c855220/v855220001/217646/ABCDEFGHIJK.jpg?size=400x0&quality=96"
-                    alt="Фото 1" class="photo-thumb" onclick="openModal(this.src)">
-                <img src="https://sun9-34.userapi.com/impg/c855220/v855220001/217647/LMNOPQRSTUV.jpg?size=400x0&quality=96"
-                    alt="Фото 2" class="photo-thumb" onclick="openModal(this.src)">
-                <img src="https://sun9-56.userapi.com/impg/c855220/v855220001/217648/WXYZ123456.jpg?size=400x0&quality=96"
-                    alt="Фото 3" class="photo-thumb" onclick="openModal(this.src)">
-                <img src="https://sun9-78.userapi.com/impg/c855220/v855220001/217649/7890ABCDEF.jpg?size=400x0&quality=96"
-                    alt="Фото 4" class="photo-thumb" onclick="openModal(this.src)">
-                <img src="https://sun9-90.userapi.com/impg/c855220/v855220001/217650/GHIJKLMNOP.jpg?size=400x0&quality=96"
-                    alt="Фото 5" class="photo-thumb" onclick="openModal(this.src)">
-                <img src="https://sun9-11.userapi.com/impg/c855220/v855220001/217651/QRSTUVWXYZ.jpg?size=400x0&quality=96"
-                    alt="Фото 6" class="photo-thumb" onclick="openModal(this.src)">
+                <div class="photo-item" onclick="openModal('Фото 1', 'photo1')">Фото 1</div>
+                <div class="photo-item" onclick="openModal('Фото 2', 'photo2')">Фото 2</div>
+                <div class="photo-item" onclick="openModal('Фото 3', 'photo3')">Фото 3</div>
+                <div class="photo-item" onclick="openModal('Фото 4', 'photo4')">Фото 4</div>
+                <div class="photo-item" onclick="openModal('Фото 5', 'photo5')">Фото 5</div>
+                <div class="photo-item" onclick="openModal('Фото 6', 'photo6')">Фото 6</div>
+                <div class="photo-item" onclick="openModal('Фото 7', 'photo7')">Фото 7</div>
+                <div class="photo-item" onclick="openModal('Фото 8', 'photo8')">Фото 8</div>
             </div>
         </div>
     </div>
 
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="close-btn">&times;</span>
+    <!-- Модальное окно -->
+    <div id="photoModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <img id="expandedImage" src="" alt="Увеличенное фото">
+            <div class="photo-container">
+                <div id="fullPhoto" class="photo-full"></div>
+            </div>
+            <div class="comments-container">
+                <h3 class="comments-title">Комментарии</h3>
+                <div class="comment">
+                    <div class="comment-author">Мария Петрова</div>
+                    <div class="comment-text">Отличное фото! Где это было сделано?</div>
+                    <div class="comment-date">5 минут назад</div>
+                </div>
+                <div class="comment">
+                    <div class="comment-author">Алексей Смирнов</div>
+                    <div class="comment-text">Классный вид! Хочу там побывать.</div>
+                    <div class="comment-date">2 часа назад</div>
+                </div>
+                <div class="comment">
+                    <div class="comment-author">Елена Иванова</div>
+                    <div class="comment-text">Ты отлично выглядишь на этом фото!</div>
+                    <div class="comment-date">вчера в 18:30</div>
+                </div>
+                <div class="comment">
+                    <div class="comment-author">Дмитрий Кузнецов</div>
+                    <div class="comment-text">Привет! Как дела? Давно не виделись.</div>
+                    <div class="comment-date">вчера в 15:45</div>
+                </div>
+            </div>
         </div>
     </div>
 
