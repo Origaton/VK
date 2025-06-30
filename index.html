@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VK</title>
-    <link rel="icon" href=" ">
+    <title>Профиль ВКонтакте</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -14,12 +13,12 @@
         <div class="profile-header">
             <div class="profile-cover"></div>
             <div class="profile-info">
-                <div class="profile-photo" onclick="openModal('Фотография профиля', 'profile')">
+                <div class="profile-photo" onclick="openModal('Фотография профиля', 'profile', 'photo')">
                     <div class="profile-photo-placeholder">Фотография профиля</div>
                 </div>
                 <div class="profile-details">
                     <h1 class="profile-name">Иван Иванов</h1>
-                    <div class="profile-status">Онлайн</div>
+                    <!-- <div class="profile-status">Онлайн</div> -->
 
                     <div class="profile-data">
                         <div class="data-item">
@@ -44,34 +43,45 @@
         </div>
 
         <div class="photos-section">
-            <h2 class="section-title">
-                Фотографии <a href="#" class="see-all">Все фотографии</a>
-            </h2>
-            <div class="photos-carousel">
-                <div class="photo-item" onclick="openModal('Фото 1', 'photo1')">Фото 1</div>
-                <div class="photo-item" onclick="openModal('Фото 2', 'photo2')">Фото 2</div>
-                <div class="photo-item" onclick="openModal('Фото 3', 'photo3')">Фото 3</div>
-                <div class="photo-item" onclick="openModal('Фото 4', 'photo4')">Фото 4</div>
-                <div class="photo-item" onclick="openModal('Фото 5', 'photo5')">Фото 5</div>
-                <div class="photo-item" onclick="openModal('Фото 6', 'photo6')">Фото 6</div>
-                <div class="photo-item" onclick="openModal('Фото 7', 'photo7')">Фото 7</div>
-                <div class="photo-item" onclick="openModal('Фото 8', 'photo8')">Фото 8</div>
+            <div class="section-header">
+                <h2 class="section-title">Фотографии и видео</h2>
+                <div class="section-tabs">
+                    <div class="tab-button active" onclick="showTab('photos')">Фото</div>
+                    <div class="tab-button" onclick="showTab('videos')">Видео</div>
+                </div>
             </div>
+
+            <div class="photos-carousel" id="photos-carousel">
+                <div class="photo-item" onclick="openModal('Фото 1', 'photo1', 'photo')">Фото 1</div>
+                <div class="photo-item" onclick="openModal('Фото 2', 'photo2', 'photo')">Фото 2</div>
+                <div class="photo-item" onclick="openModal('Фото 3', 'photo3', 'photo')">Фото 3</div>
+                <div class="photo-item" onclick="openModal('Фото 4', 'photo4', 'photo')">Фото 4</div>
+                <div class="photo-item" onclick="openModal('Фото 5', 'photo5', 'photo')">Фото 5</div>
+            </div>
+
+            <div class="videos-carousel" id="videos-carousel">
+                <div class="video-item" onclick="openModal('Видео 1', 'video1', 'video')">Видео 1</div>
+                <div class="video-item" onclick="openModal('Видео 2', 'video2', 'video')">Видео 2</div>
+                <div class="video-item" onclick="openModal('Видео 3', 'video3', 'video')">Видео 3</div>
+                <div class="video-item" onclick="openModal('Видео 4', 'video4', 'video')">Видео 4</div>
+            </div>
+
+            <!-- <a href="#" class="see-all">Показать все</a> -->
         </div>
     </div>
 
     <!-- Модальное окно -->
-    <div id="photoModal" class="modal">
+    <div id="mediaModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <div class="photo-container">
-                <div id="fullPhoto" class="photo-full"></div>
+            <div class="media-container">
+                <div id="fullMedia"></div>
             </div>
             <div class="comments-container">
                 <h3 class="comments-title">Комментарии</h3>
                 <div class="comment">
                     <div class="comment-author">Мария Петрова</div>
-                    <div class="comment-text">Отличное фото! Где это было сделано?</div>
+                    <div class="comment-text">Отличное фото/видео! Где это было сделано?</div>
                     <div class="comment-date">5 минут назад</div>
                 </div>
                 <div class="comment">
@@ -81,13 +91,8 @@
                 </div>
                 <div class="comment">
                     <div class="comment-author">Елена Иванова</div>
-                    <div class="comment-text">Ты отлично выглядишь на этом фото!</div>
+                    <div class="comment-text">Ты отлично выглядишь!</div>
                     <div class="comment-date">вчера в 18:30</div>
-                </div>
-                <div class="comment">
-                    <div class="comment-author">Дмитрий Кузнецов</div>
-                    <div class="comment-text">Привет! Как дела? Давно не виделись.</div>
-                    <div class="comment-date">вчера в 15:45</div>
                 </div>
             </div>
         </div>
