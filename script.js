@@ -1,3 +1,16 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Инициализация после загрузки DOM
+    initModal();
+});
+
+function initModal() {
+    // Создаем элемент для медиа, если его нет
+    const modalContent = document.querySelector('.modal-content .media-container');
+    if (modalContent && !document.getElementById('fullMedia')) {
+        modalContent.innerHTML = '<div id="fullMedia"></div>';
+    }
+}
+
 function showTab(tabName) {
     const photosCarousel = document.getElementById('photos-carousel');
     const videosCarousel = document.getElementById('videos-carousel');
@@ -18,7 +31,21 @@ function showTab(tabName) {
 
 function openModal(mediaText, mediaId, mediaType) {
     const modal = document.getElementById('mediaModal');
-    const fullMedia = document.getElementById('fullMedia');
+    let fullMedia = document.getElementById('fullMedia');
+
+    // Если элемента нет - создаем его
+    if (!fullMedia) {
+        const mediaContainer = document.querySelector('.media-container');
+        if (mediaContainer) {
+            mediaContainer.innerHTML = '<div id="fullMedia"></div>';
+            fullMedia = document.getElementById('fullMedia');
+        }
+    }
+
+    if (!fullMedia) {
+        console.error('Элемент fullMedia не найден');
+        return;
+    }
 
     if (mediaType === 'photo') {
         fullMedia.innerHTML = `
@@ -43,9 +70,9 @@ function closeModal() {
 }
 
 // Закрытие модального окна при клике вне его
-window.onclick = function (event) {
+document.addEventListener('click', function (event) {
     const modal = document.getElementById('mediaModal');
-    if (event.target == modal) {
+    if (event.target === modal) {
         closeModal();
     }
-}
+});
