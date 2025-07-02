@@ -12,6 +12,7 @@ body {
     padding: 20px;
 }
 
+/* Стили для профиля */
 .profile-header {
     background-color: #fff;
     border-radius: 10px;
@@ -89,7 +90,8 @@ body {
     font-size: 16px;
 }
 
-.photos-section {
+/* Стили для карусели */
+.media-section {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
@@ -144,24 +146,17 @@ body {
 .video-item {
     min-width: 150px;
     height: 150px;
-    background-color: #e7e8ec;
     border-radius: 5px;
     flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+    background-color: #e7e8ec;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #999;
-    cursor: pointer;
-    transition: transform 0.2s;
-    position: relative;
-}
-
-.video-item::before {
-    content: "▶";
-    position: absolute;
-    font-size: 30px;
-    color: white;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .photo-item:hover,
@@ -180,7 +175,82 @@ body {
     text-decoration: underline;
 }
 
-/* Модальное окно */
+/* Стили для стены (постов) */
+.wall-section {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.wall-section .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 25px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e7e8ec;
+}
+
+.post {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e7e8ec;
+}
+
+.post:last-child {
+    border-bottom: none;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post-author-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e7e8ec;
+    margin-right: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.post-author-name {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.post-date {
+    font-size: 13px;
+    color: #828282;
+    margin-top: 2px;
+}
+
+.post-text {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.post-photo {
+    width: 100%;
+    max-height: 400px;
+    background-color: #e7e8ec;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+/* Стили для модального окна */
 .modal {
     display: none;
     position: fixed;
@@ -190,6 +260,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
 }
 
 .modal-content {
@@ -211,55 +282,10 @@ body {
     background-color: #f5f5f5;
 }
 
-.media-preview {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.full-media-content {
-    max-width: 100%;
-    max-height: 80vh;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Для видео */
-.full-media-content video {
-    background-color: #000;
-}
-
-.photo-full,
-.video-full {
+.full-media {
     max-width: 100%;
     max-height: 70vh;
     object-fit: contain;
-}
-
-.video-full {
-    width: 100%;
-    height: auto;
-}
-
-.photo-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e7e8ec;
-    color: #999;
-}
-
-.video-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #333;
-    color: #fff;
-    position: relative;
 }
 
 .comments-container {
@@ -299,13 +325,6 @@ body {
     font-size: 12px;
     color: #828282;
     margin-top: 5px;
-}
-
-.play-icon {
-    position: absolute;
-    font-size: 50px;
-    color: white;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .close {
