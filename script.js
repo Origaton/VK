@@ -1,11 +1,11 @@
 // Ждем полной загрузки DOM
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Инициализируем модальное окно
     initModal();
-    
+
     // Назначаем обработчики для всех фото и видео элементов
     setupMediaItems();
-    
+
     // Назначаем обработчики для табов
     setupTabs();
 });
@@ -32,29 +32,37 @@ function initModal() {
         </div>`;
         document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
-    
+
     // Назначаем обработчики для модального окна
     document.querySelector('.close').addEventListener('click', closeModal);
 }
 
 function setupMediaItems() {
-    // Находим все элементы с медиа и назначаем обработчики
-    const mediaItems = document.querySelectorAll('.photo-item, .video-item');
-    
-    mediaItems.forEach(item => {
-        item.addEventListener('click', function() {
+    // Загружаем превью и настраиваем обработчики
+    document.querySelectorAll('.photo-item, .video-item').forEach(item => {
+        const previewUrl = item.dataset.preview;
+        const img = item.querySelector('.media-preview');
+
+        // Загружаем превью
+        if (img && previewUrl) {
+            img.src = previewUrl;
+        }
+
+        // Обработчик клика
+        item.addEventListener('click', function () {
             const mediaType = this.classList.contains('photo-item') ? 'photo' : 'video';
-            const mediaText = this.textContent;
-            openModal(mediaText, this.id || 'media', mediaType);
+            const mediaUrl = mediaType === 'photo' ? this.dataset.full : this.dataset.src;
+            openModal(mediaUrl, mediaType);
         });
     });
 }
 
+
 function setupTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
-    
+
     tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const tabName = this.textContent.toLowerCase();
             showTab(tabName === 'фото' ? 'photos' : 'videos');
         });
@@ -65,7 +73,7 @@ function showTab(tabName) {
     const photosCarousel = document.getElementById('photos-carousel');
     const videosCarousel = document.getElementById('videos-carousel');
     const tabButtons = document.querySelectorAll('.tab-button');
-    
+
     if (tabName === 'photos') {
         photosCarousel.style.display = 'flex';
         videosCarousel.style.display = 'none';
@@ -79,28 +87,28 @@ function showTab(tabName) {
     }
 }
 
-function openModal(mediaText, mediaId, mediaType) {
+function openModal(mediaUrl, mediaType) {
     const modal = document.getElementById('mediaModal');
     const fullMedia = document.getElementById('fullMedia');
-    
+
     if (!modal || !fullMedia) {
         console.error('Модальное окно не инициализировано');
         return;
     }
-    
+
     if (mediaType === 'photo') {
         fullMedia.innerHTML = `
-            <div class="photo-placeholder">
-                ${mediaText}
-            </div>`;
+            <img src="${mediaUrl}" 
+                 alt="Увеличенное фото" 
+                 class="full-media-content">`;
     } else {
         fullMedia.innerHTML = `
-            <div class="video-placeholder">
-                ${mediaText}
-                <div class="play-icon">▶</div>
-            </div>`;
+            <video controls autoplay class="full-media-content">
+                <source src="${mediaUrl}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>`;
     }
-    
+
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
@@ -114,7 +122,7 @@ function closeModal() {
 }
 
 // Закрытие по клику вне модального окна
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const modal = document.getElementById('mediaModal');
     if (event.target === modal) {
         closeModal();

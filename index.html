@@ -52,18 +52,24 @@
             </div>
 
             <div class="photos-carousel" id="photos-carousel">
-                <div class="photo-item" onclick="openModal('Фото 1', 'photo1', 'photo')">Фото 1</div>
-                <div class="photo-item" onclick="openModal('Фото 2', 'photo2', 'photo')">Фото 2</div>
-                <div class="photo-item" onclick="openModal('Фото 3', 'photo3', 'photo')">Фото 3</div>
-                <div class="photo-item" onclick="openModal('Фото 4', 'photo4', 'photo')">Фото 4</div>
-                <div class="photo-item" onclick="openModal('Фото 5', 'photo5', 'photo')">Фото 5</div>
+                <!-- Пример фото с ссылками -->
+                <div class="photo-item" data-full="https://example.com/photos/photo1-full.jpg"
+                    data-preview="https://example.com/photos/photo1-preview.jpg">
+                    <img src="" alt="Фото 1" class="media-preview">
+                </div>
+                <div class="photo-item" data-full="https://example.com/photos/photo2-full.jpg"
+                    data-preview="https://example.com/photos/photo2-preview.jpg">
+                    <img src="" alt="Фото 2" class="media-preview">
+                </div>
             </div>
 
             <div class="videos-carousel" id="videos-carousel">
-                <div class="video-item" onclick="openModal('Видео 1', 'video1', 'video')">Видео 1</div>
-                <div class="video-item" onclick="openModal('Видео 2', 'video2', 'video')">Видео 2</div>
-                <div class="video-item" onclick="openModal('Видео 3', 'video3', 'video')">Видео 3</div>
-                <div class="video-item" onclick="openModal('Видео 4', 'video4', 'video')">Видео 4</div>
+                <!-- Пример видео с превью -->
+                <div class="video-item" data-src="https://example.com/videos/video1.mp4"
+                    data-preview="https://example.com/videos/video1-preview.jpg">
+                    <img src="" alt="Видео 1" class="media-preview">
+                    <div class="play-overlay">▶</div>
+                </div>
             </div>
 
             <!-- <a href="#" class="see-all">Показать все</a> -->
