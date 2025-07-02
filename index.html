@@ -15,10 +15,12 @@
             <div class="profile-info">
                 <div class="profile-photo" onclick="openModal('Фотография профиля', 'profile', 'photo')">
                     <div class="profile-photo-placeholder">Фотография профиля</div>
+                    <!-- Для реального фото замените div выше на:
+                    <img src="ВАША_ССЫЛКА_НА_ФОТО" style="width:100%;height:100%;object-fit:cover;"> -->
                 </div>
+
                 <div class="profile-details">
                     <h1 class="profile-name">Иван Иванов</h1>
-                    <!-- <div class="profile-status">Онлайн</div> -->
 
                     <div class="profile-data">
                         <div class="data-item">
@@ -33,16 +35,12 @@
                             <div class="data-title">Университет</div>
                             <div class="data-value">МГУ</div>
                         </div>
-                        <div class="data-item">
-                            <div class="data-title">Статус</div>
-                            <div class="data-value">В активном поиске</div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="photos-section">
+        <div class="media-section">
             <div class="section-header">
                 <h2 class="section-title">Фотографии и видео</h2>
                 <div class="section-tabs">
@@ -52,21 +50,106 @@
             </div>
 
             <div class="photos-carousel" id="photos-carousel">
-                <div class="photo-item" onclick="openModal('Фото 1', 'photo1', 'photo')">Фото 1</div>
-                <div class="photo-item" onclick="openModal('Фото 2', 'photo2', 'photo')">Фото 2</div>
-                <div class="photo-item" onclick="openModal('Фото 3', 'photo3', 'photo')">Фото 3</div>
-                <div class="photo-item" onclick="openModal('Фото 4', 'photo4', 'photo')">Фото 4</div>
-                <div class="photo-item" onclick="openModal('Фото 5', 'photo5', 'photo')">Фото 5</div>
+                <div class="photo-item" onclick="openModal('Фото 1', 'photo1', 'photo')">
+                    Фото 1
+                </div>
+                <div class="photo-item" onclick="openModal('Фото 2', 'photo2', 'photo')">
+                    Фото 2
+                </div>
+                <div class="photo-item" onclick="openModal('Фото 3', 'photo3', 'photo')">
+                    Фото 3
+                </div>
+                <div class="photo-item" onclick="openModal('Фото 4', 'photo4', 'photo')">
+                    Фото 4
+                </div>
             </div>
 
             <div class="videos-carousel" id="videos-carousel">
-                <div class="video-item" onclick="openModal('Видео 1', 'video1', 'video')">Видео 1</div>
-                <div class="video-item" onclick="openModal('Видео 2', 'video2', 'video')">Видео 2</div>
-                <div class="video-item" onclick="openModal('Видео 3', 'video3', 'video')">Видео 3</div>
-                <div class="video-item" onclick="openModal('Видео 4', 'video4', 'video')">Видео 4</div>
+                <div class="video-item" onclick="openModal('Видео 1', 'photo5', 'photo')">
+                    Видео 1
+                </div>
+                <div class="video-item" onclick="openModal('Видео 2', 'photo6', 'photo')">
+                    Видео 2
+                </div>
+                <div class="video-item" onclick="openModal('Видео 3', 'photo7', 'photo')">
+                    Видео 3
+                </div>
+            </div>
+        </div>
+
+        <!-- Секция стены с постами -->
+        <div class="wall-section">
+            <h2 class="section-title">Стена</h2>
+
+            <!-- Пост 1 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-author-photo">
+                        <!-- Заглушка для фото автора -->
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                            Фото
+                        </div>
+                        <!-- Для реального фото замените div выше на:
+                        <img src="ВАША_ССЫЛКА_НА_ФОТО" style="width:100%;height:100%;object-fit:cover;"> -->
+                    </div>
+                    <div>
+                        <div class="post-author-name">Иван Иванов</div>
+                        <div class="post-date">сегодня в 15:30</div>
+                    </div>
+                </div>
+                <div class="post-text">
+                    Это мой первый пост на стене! Здесь я могу делиться своими мыслями и фотографиями.
+                </div>
+                <div class="post-photo" onclick="openModal('Фото из поста 1', 'post-photo1', 'photo')">
+                    Фотография из поста 1
+                    <!-- Для реального фото замените текст выше на:
+                    <img src="ВАША_ССЫЛКА_НА_ФОТО" style="width:100%;height:100%;object-fit:cover;"> -->
+                </div>
             </div>
 
-            <!-- <a href="#" class="see-all">Показать все</a> -->
+            <!-- Пост 2 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-author-photo">
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                            Фото
+                        </div>
+                    </div>
+                    <div>
+                        <div class="post-author-name">Иван Иванов</div>
+                        <div class="post-date">вчера в 20:15</div>
+                    </div>
+                </div>
+                <div class="post-text">
+                    Отличный день сегодня! Погода прекрасная, настроение отличное. Вот фото с моей прогулки.
+                </div>
+                <div class="post-photo" onclick="openModal('Фото из поста 2', 'post-photo2', 'photo')">
+                    Фотография из поста 2
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра медиа -->
+    <div id="mediaModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="media-container">
+                <div id="fullMedia"></div>
+            </div>
+            <div class="comments-container">
+                <h3 class="comments-title">Комментарии</h3>
+                <div class="comment">
+                    <div class="comment-author">Мария Петрова</div>
+                    <div class="comment-text">Отличное фото!</div>
+                    <div class="comment-date">5 минут назад</div>
+                </div>
+                <div class="comment">
+                    <div class="comment-author">Алексей Смирнов</div>
+                    <div class="comment-text">Классный вид!</div>
+                    <div class="comment-date">2 часа назад</div>
+                </div>
+            </div>
         </div>
     </div>
 
