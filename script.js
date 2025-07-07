@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalHTML = `
         <div id="mediaModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close"></span>
                 <div class="media-container">
                     <img id="fullMedia" class="full-media">
                 </div>
