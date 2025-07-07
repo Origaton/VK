@@ -12,7 +12,7 @@ body {
     padding: 20px;
 }
 
-/* Стили для профиля */
+/* Шапка профиля */
 .profile-header {
     background-color: #fff;
     border-radius: 10px;
@@ -23,8 +23,16 @@ body {
 
 .profile-cover {
     height: 200px;
+    overflow: hidden;
     background-color: #5181b8;
     position: relative;
+
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .profile-info {
@@ -41,17 +49,12 @@ body {
     margin-top: -80px;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
 }
 
-.profile-photo-placeholder {
+.profile-image {
     width: 100%;
     height: 100%;
-    background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
+    object-fit: cover;
 }
 
 .profile-details {
@@ -90,7 +93,7 @@ body {
     font-size: 16px;
 }
 
-/* Стили для карусели */
+/* Медиа-секция */
 .media-section {
     background-color: #fff;
     border-radius: 10px;
@@ -152,15 +155,15 @@ body {
     transition: transform 0.2s;
     position: relative;
     overflow: hidden;
-    background-color: #e7e8ec;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
 }
 
-.photo-item:hover,
-.video-item:hover {
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-item:hover {
     transform: scale(1.03);
 }
 
@@ -175,7 +178,7 @@ body {
     text-decoration: underline;
 }
 
-/* Стили для стены (постов) */
+/* Стена */
 .wall-section {
     background-color: #fff;
     border-radius: 10px;
@@ -212,13 +215,14 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #e7e8ec;
     margin-right: 10px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
+}
+
+.post-author-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post-author-name {
@@ -240,17 +244,19 @@ body {
 .post-photo {
     width: 100%;
     max-height: 400px;
-    background-color: #e7e8ec;
     border-radius: 8px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
-/* Стили для модального окна */
+.post-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Модальное окно */
 .modal {
     display: none;
     position: fixed;
@@ -275,7 +281,6 @@ body {
 
 .media-container {
     flex: 2;
-    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;

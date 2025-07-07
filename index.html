@@ -14,26 +14,25 @@
             <div class="profile-cover"></div>
             <div class="profile-info">
                 <div class="profile-photo" onclick="openModal('Фотография профиля', 'profile', 'photo')">
-                    <div class="profile-photo-placeholder">Фотография профиля</div>
-                    <!-- Для реального фото замените div выше на:
-                    <img src="ВАША_ССЫЛКА_НА_ФОТО" style="width:100%;height:100%;object-fit:cover;"> -->
+                    <img src="images/profile/avatar.jpg" alt="Аватар" class="profile-image">
                 </div>
 
                 <div class="profile-details">
-                    <h1 class="profile-name">Иван Иванов</h1>
+                    <h1 class="profile-name">Антон Соколов</h1>
 
                     <div class="profile-data">
                         <div class="data-item">
-                            <div class="data-title">День рождения</div>
-                            <div class="data-value">15 января</div>
+                            <div class="data-title">Возраст</div>
+                            <div class="data-value">28 лет</div>
                         </div>
                         <div class="data-item">
-                            <div class="data-title">Город</div>
-                            <div class="data-value">Москва</div>
+                            <div class="data-title">Знак зодиака</div>
+                            <div class="data-value">Скорпион</div>
                         </div>
                         <div class="data-item">
-                            <div class="data-title">Университет</div>
-                            <div class="data-value">МГУ</div>
+                            <!-- Вдруг понадобится -->
+                            <div class="data-title"></div>
+                            <div class="data-value"></div>
                         </div>
                     </div>
                 </div>
@@ -50,17 +49,33 @@
             </div>
 
             <div class="photos-carousel" id="photos-carousel">
-                <div class="photo-item" onclick="openModal('Фото 1', 'photo1', 'photo')">
-                    Фото 1
+                <div class="photo-item" data-full="images/photos/photo1.jpg"
+                    onclick="openModal('Фото 1', 'photo1', 'photo')">
+                    <img src="images/photos/photo1.jpg" alt="Фото 1">
                 </div>
-                <div class="photo-item" onclick="openModal('Фото 2', 'photo2', 'photo')">
-                    Фото 2
+                <div class="photo-item" data-full="images/photos/photo2.jpg"
+                    onclick="openModal('Фото 2', 'photo2', 'photo')">
+                    <img src="images/photos/photo2.jpg" alt="Фото 2">
                 </div>
-                <div class="photo-item" onclick="openModal('Фото 3', 'photo3', 'photo')">
-                    Фото 3
+                <div class="photo-item" data-full="images/photos/photo3.jpg"
+                    onclick="openModal('Фото 3', 'photo3', 'photo')">
+                    <img src="images/photos/photo3.jpg" alt="Фото 3">
                 </div>
-                <div class="photo-item" onclick="openModal('Фото 4', 'photo4', 'photo')">
-                    Фото 4
+                <div class="photo-item" data-full="images/photos/photo4.jpg"
+                    onclick="openModal('Фото 4', 'photo4', 'photo')">
+                    <img src="images/photos/photo4.jpg" alt="Фото 4">
+                </div>
+                <div class="photo-item" data-full="images/photos/photo5.jpg"
+                    onclick="openModal('Фото 5', 'photo5', 'photo')">
+                    <img src="images/photos/photo5.jpg" alt="Фото 5">
+                </div>
+                <div class="photo-item" data-full="images/photos/photo6.jpg"
+                    onclick="openModal('Фото 6', 'photo6', 'photo')">
+                    <img src="images/photos/photo6.jpg" alt="Фото 6">
+                </div>
+                <div class="photo-item" data-full="images/photos/photo7.jpg"
+                    onclick="openModal('Фото 7', 'photo7', 'photo')">
+                    <img src="images/photos/photo7.jpg" alt="Фото 7">
                 </div>
             </div>
 
@@ -85,12 +100,7 @@
             <div class="post">
                 <div class="post-header">
                     <div class="post-author-photo">
-                        <!-- Заглушка для фото автора -->
-                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-                            Фото
-                        </div>
-                        <!-- Для реального фото замените div выше на:
-                        <img src="ВАША_ССЫЛКА_НА_ФОТО" style="width:100%;height:100%;object-fit:cover;"> -->
+                        <img src="images/profile/avatar.jpg" alt="Автор">
                     </div>
                     <div>
                         <div class="post-author-name">Иван Иванов</div>
@@ -98,33 +108,10 @@
                     </div>
                 </div>
                 <div class="post-text">
-                    Это мой первый пост на стене! Здесь я могу делиться своими мыслями и фотографиями.
-                </div>
-                <div class="post-photo" onclick="openModal('Фото из поста 1', 'post-photo1', 'photo')">
-                    Фотография из поста 1
-                    <!-- Для реального фото замените текст выше на:
-                    <img src="ВАША_ССЫЛКА_НА_ФОТО" style="width:100%;height:100%;object-fit:cover;"> -->
-                </div>
-            </div>
-
-            <!-- Пост 2 -->
-            <div class="post">
-                <div class="post-header">
-                    <div class="post-author-photo">
-                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-                            Фото
-                        </div>
-                    </div>
-                    <div>
-                        <div class="post-author-name">Иван Иванов</div>
-                        <div class="post-date">вчера в 20:15</div>
-                    </div>
-                </div>
-                <div class="post-text">
-                    Отличный день сегодня! Погода прекрасная, настроение отличное. Вот фото с моей прогулки.
-                </div>
-                <div class="post-photo" onclick="openModal('Фото из поста 2', 'post-photo2', 'photo')">
-                    Фотография из поста 2
+                    Текст поста </div>
+                <div class="post-photo" data-full="images/posts/post1.jpg"
+                    onclick="openModal('Фото из поста 1', 'post-photo1', 'photo')">
+                    <img src="images/posts/post1.jpg" alt="Фото из поста">
                 </div>
             </div>
         </div>
