@@ -1,109 +1,145 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Инициализация элементов
-    const modal = document.getElementById('mediaModal');
-    const closeBtn = document.querySelector('.close');
-    const fullMedia = document.getElementById('fullMedia');
-    const mediaContainer = document.querySelector('.media-container');
+// Ожидаем полной загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Элементы модального окна
+    let modal;
+    let closeBtn;
+    let fullMedia;
+    let commentsContainer;
 
-    // Проверка существования критических элементов
-    if (!modal || !closeBtn || !fullMedia || !mediaContainer) {
-        console.error('Не найдены необходимые элементы для модального окна');
-        return;
-    }
-
-    // Функция открытия модального окна
-    function openModal(imagePath) {
-        console.log('Opening image:', imagePath); // Логирование для отладки
-
-        // Создаем новое изображение для предварительной загрузки
-        const img = new Image();
-        img.src = imagePath;
-        img.alt = "Увеличенное изображение";
-        img.className = 'full-media';
-        img.onload = function () {
-            // Очищаем контейнер и добавляем загруженное изображение
-            mediaContainer.innerHTML = '';
-            mediaContainer.appendChild(img);
-
-            // Показываем модальное окно
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        };
-
-        img.onerror = function () {
-            console.error('Ошибка загрузки изображения:', imagePath);
-            mediaContainer.innerHTML = `
-                <div class="error-message">
-                    Не удалось загрузить изображение
-                    <p>${imagePath}</p>
+    // Инициализация модального окна
+    function initModal() {
+        // Создаем структуру модального окна
+        const modalHTML = `
+        <div id="mediaModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="media-container">
+                    <img id="fullMedia" class="full-media">
                 </div>
-            `;
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        };
+                <div class="comments-container">
+                    <h3 class="comments-title">Комментарии</h3>
+                    <div class="comment-list">
+                        <!-- Комментарии будут добавляться здесь -->
+                    </div>
+                </div>
+            </div>
+        </div>`;
+        
+        // Добавляем модальное окно в DOM
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        
+        // Получаем ссылки на элементы
+        modal = document.getElementById('mediaModal');
+        closeBtn = document.querySelector('.close');
+        fullMedia = document.getElementById('fullMedia');
+        commentsContainer = document.querySelector('.comment-list');
     }
 
-    // Функция закрытия модального окна
+    // Открытие модального окна
+    function openModal(imageSrc, imageAlt = 'Изображение') {
+        // Устанавливаем изображение
+        fullMedia.src = imageSrc;
+        fullMedia.alt = imageAlt;
+        
+        // Генерируем комментарии
+        generateComments();
+        
+        // Показываем модальное окно
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Закрытие модального окна
     function closeModal() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 
-    // Обработчики для всех элементов с атрибутом data-full
-    document.querySelectorAll('[data-full]').forEach(item => {
-        item.addEventListener('click', function (e) {
-            e.preventDefault();
-            const fullImagePath = this.getAttribute('data-full');
-            openModal(fullImagePath);
+    // Генерация комментариев
+    function generateComments() {
+        const comments = [
+            {
+                author: 'Мария Петрова',
+                text: 'Отличное фото! Где это было сделано?',
+                date: '5 минут назад'
+            },
+            {
+                author: 'Алексей Смирнов',
+                text: 'Классный вид! Хочу там побывать.',
+                date: '2 часа назад'
+            },
+            {
+                author: 'Елена Иванова',
+                text: 'Ты отлично выглядишь на этом фото!',
+                date: 'вчера в 18:30'
+            }
+        ];
+
+        // Очищаем контейнер
+        commentsContainer.innerHTML = '';
+
+        // Добавляем комментарии
+        comments.forEach(comment => {
+            const commentHTML = `
+            <div class="comment">
+                <div class="comment-author">${comment.author}</div>
+                <div class="comment-text">${comment.text}</div>
+                <div class="comment-date">${comment.date}</div>
+            </div>`;
+            commentsContainer.insertAdjacentHTML('beforeend', commentHTML);
         });
-    });
+    }
 
-    // Обработчики для фотографий в постах (если они используют просто img)
-    document.querySelectorAll('.post-photo img').forEach(img => {
-        img.parentElement.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(img.src);
-        });
-    });
+    // Назначение обработчиков событий
+    function setupEventListeners() {
+        // Закрытие по кнопке
+        closeBtn.addEventListener('click', closeModal);
 
-    // Закрытие по кнопке
-    closeBtn.addEventListener('click', closeModal);
-
-    // Закрытие по клику вне окна
-    window.addEventListener('click', function (event) {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-
-    // Переключение вкладок (фото/видео)
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', function () {
-            // Удаляем активный класс у всех кнопок
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Добавляем активный класс текущей кнопке
-            this.classList.add('active');
-
-            // Переключаем отображение каруселей
-            const tabType = this.textContent.trim().toLowerCase();
-            const photosCarousel = document.getElementById('photos-carousel');
-            const videosCarousel = document.getElementById('videos-carousel');
-
-            if (photosCarousel && videosCarousel) {
-                photosCarousel.style.display =
-                    tabType === 'фото' ? 'flex' : 'none';
-                videosCarousel.style.display =
-                    tabType === 'видео' ? 'flex' : 'none';
+        // Закрытие по клику вне окна
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
             }
         });
-    });
 
-    // Инициализация первой вкладки как активной
-    const defaultTab = document.querySelector('.tab-button.active');
-    if (defaultTab) {
-        defaultTab.click();
+        // Обработчики для фотографий
+        document.querySelectorAll('.photo-item, .post-photo').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img') || this;
+                const imgSrc = this.dataset.full || img.src;
+                const imgAlt = img.alt || 'Фотография';
+                openModal(imgSrc, imgAlt);
+            });
+        });
+
+        // Переключение вкладок (фото/видео)
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const tabType = this.textContent.trim().toLowerCase();
+                document.getElementById('photos-carousel').style.display = 
+                    tabType === 'фото' ? 'flex' : 'none';
+                document.getElementById('videos-carousel').style.display = 
+                    tabType === 'видео' ? 'flex' : 'none';
+            });
+        });
     }
+
+    // Инициализация по умолчанию
+    function initDefaults() {
+        // Активируем первую вкладку
+        const defaultTab = document.querySelector('.tab-button.active');
+        if (defaultTab) {
+            defaultTab.click();
+        }
+    }
+
+    // Основная инициализация
+    initModal();
+    setupEventListeners();
+    initDefaults();
 });
