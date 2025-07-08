@@ -15,6 +15,7 @@ body {
 
 .header-bg {
     height: 180px;
+    background-image: url(images/profile/background.jpg);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -156,7 +157,7 @@ body {
     text-overflow: ellipsis;
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
     .header-bg {
         height: 150px;
     }
@@ -183,7 +184,7 @@ body {
         padding: 8px 12px;
         font-size: 14px;
     }
-}
+} */
 
 /* Медиа-секция */
 .media-section {
