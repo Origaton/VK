@@ -14,7 +14,7 @@ body {
 }
 
 .header-bg {
-    height: 180px;
+    height: 260px;
     background-image: url(images/profile/background.jpg);
     background-size: cover;
     background-position: center;
@@ -186,7 +186,7 @@ body {
     }
 } */
 
-/* Медиа-секция */
+/* ÐœÐµÐ´Ð¸Ð°-ÑÐµÐºÑ†Ð¸Ñ */
 .media-section {
     background-color: #fff;
     border-radius: 10px;
@@ -271,7 +271,7 @@ body {
     text-decoration: underline;
 }
 
-/* Стена */
+/* Ð¡Ñ‚ÐµÐ½Ð° */
 .wall-section {
     background-color: #fff;
     border-radius: 10px;
@@ -336,7 +336,7 @@ body {
 
 .post-photo {
     width: 100%;
-    max-height: 400px;
+    /* max-height: 400px; */
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 15px;
@@ -432,7 +432,7 @@ body {
     color: #999;
 }
 
-/* Адаптация для мобильных */
+/* ÐÐ´Ð°Ð¿Ñ‚Ð°Ñ†Ð¸Ñ Ð´Ð»Ñ Ð¼Ð¾Ð±Ð¸Ð»ÑŒÐ½Ñ‹Ñ… */
 @media (max-width: 768px) {
     .modal-content {
         width: 95%;
