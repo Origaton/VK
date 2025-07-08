@@ -240,7 +240,7 @@ body {
 
 .photo-item,
 .video-item {
-    min-width: 150px;
+    width: 150px;
     height: 150px;
     border-radius: 5px;
     flex-shrink: 0;
