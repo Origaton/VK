@@ -10,30 +10,58 @@
 
 <body>
     <div class="container">
-        <div class="profile-header">
-            <div class="profile-cover"></div>
-            <div class="profile-info">
-                <div class="profile-photo" onclick="openModal('Фотография профиля', 'profile', 'photo')">
-                    <img src="images/profile/avatar.jpg" alt="Аватар" class="profile-image">
+        <!-- Фоновая фотография -->
+        <div class="header-bg">
+            <!-- <img src="images/profile/background.jpg" alt="background"> -->
+        </div>
+
+        <div class="profile-container">
+            <!-- Аватар (перекрывает часть фоновой фотографии) -->
+            <img src="images/profile/avatar.jpg" alt="Аватар" class="avatar">
+
+            <!-- Имя -->
+            <h1 class="name">Антон Соколов</h1>
+
+            <!-- Статус -->
+            <div class="status">*Здесь текст статуса*</div>
+
+            <!-- Информация -->
+            <div class="info-section">
+                <div class="info-title">О себе:</div>
+                <div class="info-content">*Здесь текст о себе*</div>
+
+                <div class="info-title">Возраст</div>
+                <div class="info-content">28 лет</div>
+
+                <div class="info-title">Знак зодиака</div>
+                <div class="info-content">Скорпион</div>
+            </div>
+
+            <!-- Кнопки -->
+            <div class="buttons">
+                <button class="btn btn-message">Написать сообщение</button>
+                <button class="btn btn-add">Добавить в друзья</button>
+            </div>
+
+            <!-- Друзья -->
+            <div class="friends-section">
+                <div class="friends-header">
+                    <div class="friends-count">Друзья: 156</div>
+                    <a href="#" class="view-all">Показать всех</a>
                 </div>
 
-                <div class="profile-details">
-                    <h1 class="profile-name">Антон Соколов</h1>
-
-                    <div class="profile-data">
-                        <div class="data-item">
-                            <div class="data-title">Возраст</div>
-                            <div class="data-value">28 лет</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-title">Знак зодиака</div>
-                            <div class="data-value">Скорпион</div>
-                        </div>
-                        <div class="data-item">
-                            <!-- Вдруг понадобится -->
-                            <div class="data-title"></div>
-                            <div class="data-value"></div>
-                        </div>
+                <div class="friends-grid">
+                    <div class="friend-item">
+                        <img src="images/photos/friend1.jpg" alt="Друг 1" class="friend-avatar">
+                        <div class="friend-name">Константин</div>
+                    </div>
+                    <div class="friend-item">
+                        <img src="images/photos/friend2.jpg" alt="Друг 2" class="friend-avatar">
+                        <div class="friend-name">Екатерина</div>
+                    </div>
+                    <div class="friend-item">
+                        <img src="images/photos/friend3.jpg" alt="Друг 3" class="friend-avatar">
+                        <div class="friend-name">Дмитрий</div>
                     </div>
                 </div>
             </div>
