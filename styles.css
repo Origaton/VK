@@ -157,36 +157,6 @@ body {
     text-overflow: ellipsis;
 }
 
-/* @media (max-width: 400px) {
-    .header-bg {
-        height: 150px;
-    }
-
-    .profile-container {
-        padding-top: 60px;
-    }
-
-    .avatar {
-        width: 100px;
-        height: 100px;
-    }
-
-    .name {
-        font-size: 20px;
-    }
-
-    .friend-avatar {
-        width: 70px;
-        height: 70px;
-    }
-
-    .btn {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-} */
-
-/* ÐœÐµÐ´Ð¸Ð°-ÑÐµÐºÑ†Ð¸Ñ */
 .media-section {
     background-color: #fff;
     border-radius: 10px;
@@ -271,7 +241,6 @@ body {
     text-decoration: underline;
 }
 
-/* Ð¡Ñ‚ÐµÐ½Ð° */
 .wall-section {
     background-color: #fff;
     border-radius: 10px;
@@ -290,7 +259,6 @@ body {
 
 .post {
     margin-bottom: 30px;
-    padding-bottom: 20px;
     border-bottom: 1px solid #e7e8ec;
 }
 
@@ -336,10 +304,8 @@ body {
 
 .post-photo {
     width: 100%;
-    /* max-height: 400px; */
     border-radius: 8px;
     overflow: hidden;
-    margin-bottom: 15px;
     cursor: pointer;
 }
 
@@ -347,6 +313,59 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.post-actions {
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: space-between;
+}
+
+.post-action {
+    display: flex;
+    align-items: center;
+    color: #656565;
+    cursor: pointer;
+}
+
+.post-action:hover {
+    color: #2a5885;
+}
+
+.post-actions-left {
+    display: flex;
+    gap: 20px;
+}
+
+.post-actions-right {
+    margin-left: auto;
+}
+
+.action-icon {
+    margin-right: 5px;
+}
+
+.action-count {
+    margin-left: 5px;
+    color: #656565;
+}
+
+.action-icon {
+    width: 16px;
+    /* Размер иконок */
+    height: 16px;
+    margin-right: 5px;
+    vertical-align: middle;
+    /* Выравнивание по центру текста */
+    opacity: 0.8;
+    /* Лёгкая прозрачность */
+    transition: opacity 0.2s;
+    /* Плавное изменение при наведении */
+}
+
+.post-action:hover .action-icon {
+    opacity: 1;
+    /* Полная видимость при наведении */
 }
 
 .modal {
@@ -432,7 +451,6 @@ body {
     color: #999;
 }
 
-/* ÐÐ´Ð°Ð¿Ñ‚Ð°Ñ†Ð¸Ñ Ð´Ð»Ñ Ð¼Ð¾Ð±Ð¸Ð»ÑŒÐ½Ñ‹Ñ… */
 @media (max-width: 768px) {
     .modal-content {
         width: 95%;
